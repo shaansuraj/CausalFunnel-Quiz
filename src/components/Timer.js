@@ -21,8 +21,7 @@ function Timer({ initialTime, onTimeUp }) {
     }, 1000);
 
     return () => clearInterval(timer);
-    // eslint-disable-next-line
-  }, []);
+  }, [onTimeUp]);
 
   // Convert seconds to mm:ss
   const minutes = Math.floor(timeLeft / 60);

@@ -1,132 +1,349 @@
-/* Global Styling */
-
-body, html {
+/* ========== 1. Global Reset & Basic Styling ========== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', Arial, sans-serif;
   background: #f6f9fc;
   color: #333;
 }
 
+/* ========== 2. App Container: gradient background with full height ========== */
 .app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 100%);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-/* Smooth fade-in transitions */
-.fade-in {
-  animation: fadeIn 0.3s ease-in;
+/* ========== 3. Header ========== */
+.app-header {
+  text-align: center;
+  padding: 20px 0;
+  background: #fff; /* White background so gradient text stands out */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  /* Gradient text similar to CausalFunnel theme */
+  background: linear-gradient(90deg, #6e3cbc, #1ab0eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Basic responsive container */
+/* ========== 4. Container Class for Card-like Boxes ========== */
 .container {
   width: 90%;
   max-width: 800px;
   margin: 20px auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  animation: fadeSlideIn 0.4s ease; /* Appear animation */
 }
 
-/* Buttons */
+/* Fade + SlideIn Animation */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade only, used in "fade-in" class if needed */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== 5. Forms and Inputs ========== */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="email"] {
+  width: 80%;
+  padding: 12px;
+  margin: 16px 0;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+input[type="email"]:focus {
+  border-color: #a18cd1;
+  outline: none;
+}
+
+/* ========== 6. Buttons ========== */
 .btn {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   border: none;
-  padding: 10px 16px;
-  color: #fff;
-  font-weight: 600;
+  padding: 12px 20px;
+  color: #5012df;
+  font-weight: 700;
   cursor: pointer;
-  margin: 8px 5px 0 0;
-  border-radius: 4px;
-  transition: background-color 0.2s ease-in;
+  margin: 8px;
+  border-radius: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 14px;
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.1),  /* existing drop shadow */
+    0 0 10px rgba(161, 140, 209, 0.6); /* glow effect */
 }
 
-/* Input styling */
-input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  margin: 0 auto 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: none;
 }
 
-/* Questions navigation overview */
+/* Distinct overrides for specific buttons */
+.btn-blue {
+  background-color: #2196f3 !important; /* Blue */
+  color: #fff !important;
+  background-image: none !important;
+}
+
+.btn-green {
+  background-color: #4caf50 !important; /* Green */
+  color: #fff !important;
+  background-image: none !important;
+}
+
+.btn-red {
+  background-color: #f44336 !important; /* Red */
+  color: #fff !important;
+  background-image: none !important;
+}
+
+/* ========== 7. Timer ========== */
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #6c63ff;
+}
+
+/* ========== 8. Overview Navigation ========== */
 .overview-container {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 10px 0;
+  margin: 15px 0 25px;
+  justify-content: center;
 }
+
 .question-box {
   width: 40px;
   height: 40px;
-  background-color: #ccc;
-  border-radius: 50%;
+  border-radius: 20px;
+  background-color: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.2s ease;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
+  color: #555;
 }
-.question-box.visited {
-  background-color: #ffea85;
-}
-.question-box.attempted {
-  background-color: #b7ffa9;
-}
+
 .question-box:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
+
 .question-box.active {
-  outline: 2px solid #007bff;
+  outline: 3px solid #6c63ff;
   outline-offset: 2px;
 }
 
-/* Timer style */
-.timer {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.question-box.visited {
+  background-color: #fbc2eb;
 }
 
-/* Radio buttons container */
+.question-box.attempted {
+  background-color: #a3e7a5;
+}
+
+/* ========== 9. Questions ========== */
+.question-wrapper {
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
 .options-container {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
 }
+
 .options-container label {
   margin-bottom: 8px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* Report styling */
+.options-container input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+/* ========== 10. Navigation Buttons (Prev, Next, Submit) container ========== */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ========== 11. Report Page ========== */
 .report-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.report-question {
-  background: #fafafa;
-  padding: 10px;
-  border-radius: 6px;
+
+/* Container that wraps the top summary (Quiz Report, Email, Score) */
+.report-summary {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
+
+/* Headline for the report */
+.report-summary h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: #050000;
+}
+
+/* Info text (e.g., Email) */
+.report-info {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #030370;
+}
+
+/* Time-up warning (in red) */
+.report-time-up {
+  color: #ff4444;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+/* Score text */
+.report-score {
+  margin: 10px 0;
+  color: #03770f;
+  font-size: 1.1rem;
+}
+
+/* A small badge around the numeric score */
+.score-badge {
+  background-color: #97051d;
+  color: #f5f9f6;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Container for each question & answer detail */
+.report-question {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the correct answer text */
 .correct-answer {
   color: green;
   font-weight: 500;
 }
+
+/* Style for the user's answer text */
 .user-answer {
   color: #555;
   font-weight: 500;
+}
+
+/* ========== 12. Media Queries for Responsiveness ========== */
+/* Tablets and smaller desktops (up to ~992px) */
+@media (max-width: 992px) {
+  .timer {
+    font-size: 18px;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+}
+
+/* Mobile screens (up to ~600px) */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .timer {
+    font-size: 16px;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .question-text {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .question-box {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
 }

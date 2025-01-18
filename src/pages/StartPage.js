@@ -19,7 +19,10 @@ function StartPage({ onStartQuiz }) {
 
   return (
     <div className="container fade-in" style={{ textAlign: 'center' }}>
-      <h1>CausalFunnel Quiz</h1>
+      <h2 style={{ marginBottom: '10px' }}>Welcome to the CausalFunnel Quiz!</h2>
+      <p style={{ marginBottom: '20px' }}>
+        Enter your email address to get started.
+      </p>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -27,7 +30,6 @@ function StartPage({ onStartQuiz }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br />
         <button type="submit" className="btn">
           Start Quiz
         </button>

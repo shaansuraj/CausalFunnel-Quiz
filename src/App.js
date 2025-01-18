@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StartPage from './pages/StartPage';
 import QuizPage from './pages/QuizPage';
 import ReportPage from './pages/ReportPage';
+import Header from './components/Header';
 import './App.css';
 
 /**
@@ -14,7 +15,7 @@ function App() {
   const [stage, setStage] = useState('start'); // "start" | "quiz" | "report"
   const [email, setEmail] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [userAnswers, setUserAnswers] = useState([]); // array of user-selected answers
+  const [userAnswers, setUserAnswers] = useState([]); 
   const [timeUp, setTimeUp] = useState(false);
 
   const handleStartQuiz = (enteredEmail) => {
@@ -28,6 +29,9 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Shared Header with a brand name */}
+      <Header />
+
       {stage === 'start' && (
         <StartPage onStartQuiz={handleStartQuiz} />
       )}
