@@ -1,0 +1,132 @@
+/* Global Styling */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #f6f9fc;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Smooth fade-in transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Basic responsive container */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+/* Buttons */
+.btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 16px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px 5px 0 0;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Input styling */
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Questions navigation overview */
+.overview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+.question-box {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+.question-box.visited {
+  background-color: #ffea85;
+}
+.question-box.attempted {
+  background-color: #b7ffa9;
+}
+.question-box:hover {
+  transform: scale(1.08);
+}
+.question-box.active {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Timer style */
+.timer {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Radio buttons container */
+.options-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.options-container label {
+  margin-bottom: 8px;
+}
+
+/* Report styling */
+.report-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.report-question {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 6px;
+}
+.correct-answer {
+  color: green;
+  font-weight: 500;
+}
+.user-answer {
+  color: #555;
+  font-weight: 500;
+}
